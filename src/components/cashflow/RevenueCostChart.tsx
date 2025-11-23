@@ -1,9 +1,11 @@
+import { useMemo } from 'react'
 import Chart from 'react-apexcharts'
 import { ApexOptions } from 'apexcharts'
 import Card from '../shared/Card'
+import { MONTH_LABELS, COLORS, formatCurrency } from '../../data/constants'
 
 export default function RevenueCostChart() {
-  const options: ApexOptions = {
+  const options: ApexOptions = useMemo(() => ({
     chart: {
       type: 'bar',
       height: 350,
@@ -14,35 +16,29 @@ export default function RevenueCostChart() {
       bar: {
         horizontal: false,
         columnWidth: '70%',
-        dataLabels: {
-          position: 'top'
-        }
       }
     },
-    colors: ['#427bf6', '#050316'],
-    dataLabels: {
-      enabled: false
-    },
+    colors: [COLORS.primary, COLORS.text],
+    dataLabels: { enabled: false },
     stroke: {
       show: true,
       width: 2,
       colors: ['transparent']
     },
     grid: {
-      borderColor: '#e5e7eb',
+      borderColor: COLORS.border,
       strokeDashArray: 4
     },
     xaxis: {
-      categories: ['Okt 24', 'Nov 24', 'Dec 24', 'Jan 25', 'Feb 25', 'Mar 25',
-                   'Apr 25', 'Maj 25', 'Jun 25', 'Jul 25', 'Aug 25', 'Sep 25', 'Okt 25'],
+      categories: MONTH_LABELS as unknown as string[],
       labels: {
-        style: { colors: '#050316', fontSize: '12px' }
+        style: { colors: COLORS.text, fontSize: '12px' }
       }
     },
     yaxis: {
       labels: {
-        formatter: (value: number) => value.toLocaleString('sv-SE') + ' kr',
-        style: { colors: '#050316', fontSize: '12px' }
+        formatter: formatCurrency,
+        style: { colors: COLORS.text, fontSize: '12px' }
       }
     },
     legend: {
@@ -50,13 +46,11 @@ export default function RevenueCostChart() {
       fontSize: '14px'
     },
     tooltip: {
-      y: {
-        formatter: (value: number) => value.toLocaleString('sv-SE') + ' kr'
-      }
+      y: { formatter: formatCurrency }
     }
-  }
+  }), [])
 
-  const series = [
+  const series = useMemo(() => [
     {
       name: 'Intäkter',
       data: [73811, 243688, 141413, 331387, 627963, 805560,
@@ -67,7 +61,7 @@ export default function RevenueCostChart() {
       data: [236, 248425, 370823, 343598, 710144, 500092,
              1684689, 677834, 364159, 1173141, 769971, 1403757, 1217531]
     }
-  ]
+  ], [])
 
   return (
     <Card title="Intäkter vs Kostnader" subtitle="Månatlig jämförelse">

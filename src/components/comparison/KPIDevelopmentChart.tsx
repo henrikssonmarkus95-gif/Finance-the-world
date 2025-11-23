@@ -1,9 +1,11 @@
+import { useMemo } from 'react'
 import Chart from 'react-apexcharts'
 import { ApexOptions } from 'apexcharts'
 import Card from '../shared/Card'
+import { COLORS } from '../../data/constants'
 
 export default function KPIDevelopmentChart() {
-  const options: ApexOptions = {
+  const options: ApexOptions = useMemo(() => ({
     chart: {
       type: 'line',
       height: 300,
@@ -13,28 +15,28 @@ export default function KPIDevelopmentChart() {
     stroke: {
       curve: 'smooth',
       width: 3,
-      colors: ['#427bf6', '#050316']
+      colors: [COLORS.primary, COLORS.text]
     },
     markers: {
       size: 6,
-      colors: ['#427bf6', '#050316'],
-      strokeColors: '#fff',
+      colors: [COLORS.primary, COLORS.text],
+      strokeColors: COLORS.white,
       strokeWidth: 2
     },
     grid: {
-      borderColor: '#e5e7eb',
+      borderColor: COLORS.border,
       strokeDashArray: 4
     },
     xaxis: {
       categories: ['2023', '2024'],
       labels: {
-        style: { colors: '#050316', fontSize: '12px' }
+        style: { colors: COLORS.text, fontSize: '12px' }
       }
     },
     yaxis: {
       labels: {
         formatter: (value: number) => value + '%',
-        style: { colors: '#050316', fontSize: '12px' }
+        style: { colors: COLORS.text, fontSize: '12px' }
       }
     },
     legend: {
@@ -46,18 +48,12 @@ export default function KPIDevelopmentChart() {
         formatter: (value: number) => value + '%'
       }
     }
-  }
+  }), [])
 
-  const series = [
-    {
-      name: 'Soliditet (%)',
-      data: [16.1, 50.0]
-    },
-    {
-      name: 'Kassalikviditet (%)',
-      data: [83.3, 98.3]
-    }
-  ]
+  const series = useMemo(() => [
+    { name: 'Soliditet (%)', data: [16.1, 50.0] },
+    { name: 'Kassalikviditet (%)', data: [83.3, 98.3] }
+  ], [])
 
   return (
     <Card title="Nyckeltalsutveckling" subtitle="Soliditet och kassalikviditet">

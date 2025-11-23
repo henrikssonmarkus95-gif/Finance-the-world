@@ -1,9 +1,11 @@
+import { useMemo } from 'react'
 import Chart from 'react-apexcharts'
 import { ApexOptions } from 'apexcharts'
 import Card from '../shared/Card'
+import { COLORS, formatCurrency } from '../../data/constants'
 
 export default function CostDevelopmentChart() {
-  const options: ApexOptions = {
+  const options: ApexOptions = useMemo(() => ({
     chart: {
       type: 'bar',
       height: 350,
@@ -14,34 +16,29 @@ export default function CostDevelopmentChart() {
       bar: {
         horizontal: false,
         columnWidth: '65%',
-        dataLabels: {
-          position: 'top'
-        }
       }
     },
-    colors: ['#427bf6', '#050316'],
-    dataLabels: {
-      enabled: false
-    },
+    colors: [COLORS.primary, COLORS.text],
+    dataLabels: { enabled: false },
     stroke: {
       show: true,
       width: 2,
       colors: ['transparent']
     },
     grid: {
-      borderColor: '#e5e7eb',
+      borderColor: COLORS.border,
       strokeDashArray: 4
     },
     xaxis: {
       categories: ['Råvaror', 'Externa kostnader', 'Personal', 'Avskrivningar'],
       labels: {
-        style: { colors: '#050316', fontSize: '12px' }
+        style: { colors: COLORS.text, fontSize: '12px' }
       }
     },
     yaxis: {
       labels: {
-        formatter: (value: number) => value.toLocaleString('sv-SE') + ' kr',
-        style: { colors: '#050316', fontSize: '12px' }
+        formatter: formatCurrency,
+        style: { colors: COLORS.text, fontSize: '12px' }
       }
     },
     legend: {
@@ -49,22 +46,14 @@ export default function CostDevelopmentChart() {
       fontSize: '14px'
     },
     tooltip: {
-      y: {
-        formatter: (value: number) => value.toLocaleString('sv-SE') + ' kr'
-      }
+      y: { formatter: formatCurrency }
     }
-  }
+  }), [])
 
-  const series = [
-    {
-      name: '2024',
-      data: [119150, 363041, 823090, 69840]
-    },
-    {
-      name: '2023',
-      data: [5500, 131568, 10180, 37800]
-    }
-  ]
+  const series = useMemo(() => [
+    { name: '2024', data: [119150, 363041, 823090, 69840] },
+    { name: '2023', data: [5500, 131568, 10180, 37800] }
+  ], [])
 
   return (
     <Card title="Kostnadsutveckling" subtitle="Jämförelse 2024 vs 2023">

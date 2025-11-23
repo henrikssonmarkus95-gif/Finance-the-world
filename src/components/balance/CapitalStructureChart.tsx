@@ -1,51 +1,23 @@
+import { useMemo } from 'react'
 import Chart from 'react-apexcharts'
-import { ApexOptions } from 'apexcharts'
 import Card from '../shared/Card'
+import { COLORS } from '../../data/constants'
+import { createDonutChartOptions } from '../../utils/chartConfig'
 
 export default function CapitalStructureChart() {
-  const options: ApexOptions = {
-    chart: {
-      type: 'donut',
-      height: 300,
-      fontFamily: 'Inter, sans-serif'
-    },
-    colors: ['#427bf6', '#050316'],
-    labels: ['Eget kapital (50.0%)', 'Kortfristiga skulder (50.0%)'],
-    legend: {
-      position: 'bottom',
-      fontSize: '14px'
-    },
-    dataLabels: {
-      enabled: true,
-      formatter: (val: number) => val.toFixed(1) + '%',
-      style: {
-        fontSize: '14px',
-        colors: ['#ffffff']
-      }
-    },
-    plotOptions: {
-      pie: {
-        donut: {
-          size: '65%',
-          labels: {
-            show: true,
-            total: {
-              show: true,
-              label: 'Balansomslutning',
-              formatter: () => '685 473 kr'
-            }
-          }
-        }
-      }
-    },
-    tooltip: {
-      y: {
-        formatter: (value: number) => value.toLocaleString('sv-SE') + ' kr'
-      }
-    }
-  }
+  const labels = ['Eget kapital (50.0%)', 'Kortfristiga skulder (50.0%)']
 
-  const series = [342684, 342789]
+  const options = useMemo(
+    () => createDonutChartOptions(
+      labels,
+      [COLORS.primary, COLORS.text],
+      'Balansomslutning',
+      '685 473 kr'
+    ),
+    []
+  )
+
+  const series = useMemo(() => [342684, 342789], [])
 
   return (
     <Card title="Kapitalstruktur 2024" subtitle="Fördelning eget kapital och skulder">
