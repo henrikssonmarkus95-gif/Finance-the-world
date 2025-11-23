@@ -9,12 +9,12 @@ export default function Section({ title, description, children, className = '' }
   return (
     <section className={className}>
       {(title || description) && (
-        <div className="mb-4">
+        <div className="mb-6">
           {title && (
-            <h2 className="text-[18px] font-medium text-[#050316]">{title}</h2>
+            <h2 className="text-[24px] font-semibold text-[#050316] tracking-tight">{title}</h2>
           )}
           {description && (
-            <p className="text-[13px] text-[#050316]/60 mt-0.5">{description}</p>
+            <p className="text-[14px] text-[#050316]/50 mt-1">{description}</p>
           )}
         </div>
       )}

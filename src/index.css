@@ -1,23 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-  --color-arcim-bg: #f9faf7;
+  --color-arcim-bg: #fafafa;
   --color-arcim-surface: #ffffff;
   --color-arcim-primary: #050316;
-  --color-arcim-accent: #427bf6;
+  --color-arcim-accent: #050316;
   --color-arcim-border: #e5e7eb;
 
   --font-family-sans: 'Inter', system-ui, sans-serif;
 
-  --font-size-h1: 32px;
-  --font-size-h2: 24px;
-  --font-size-h3: 20px;
+  --font-size-h1: 40px;
+  --font-size-h2: 32px;
+  --font-size-h3: 24px;
   --font-size-body: 14px;
-  --font-size-small: 12px;
+  --font-size-small: 13px;
 }
 
 body {
   background-color: var(--color-arcim-bg);
   color: var(--color-arcim-primary);
   font-family: var(--font-family-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

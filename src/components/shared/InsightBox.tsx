@@ -6,15 +6,15 @@ interface InsightBoxProps {
 
 export default function InsightBox({ title, children, variant = 'default' }: InsightBoxProps) {
   const variants = {
-    default: 'bg-[#f9faf7] border-[#e5e7eb]',
-    highlight: 'bg-[#427bf6]/5 border-[#427bf6]/20',
-    warning: 'bg-amber-50 border-amber-200',
+    default: 'bg-[#fafafa] border-[#e5e7eb]',
+    highlight: 'bg-[#fafafa] border-[#050316]/20',
+    warning: 'bg-[#fafafa] border-[#050316]/20',
   }
 
   return (
-    <div className={`rounded-xl border p-4 ${variants[variant]}`}>
-      <p className="text-[13px] font-medium text-[#050316] mb-1">{title}</p>
-      <div className="text-[13px] text-[#050316]/70 leading-relaxed">
+    <div className={`rounded-xl border p-6 ${variants[variant]}`}>
+      <p className="text-[14px] font-semibold text-[#050316] mb-2">{title}</p>
+      <div className="text-[14px] text-[#050316]/60 leading-relaxed">
         {children}
       </div>
     </div>

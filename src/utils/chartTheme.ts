@@ -1,14 +1,14 @@
 import { ApexOptions } from 'apexcharts'
 
 export const chartColors = {
-  primary: '#427bf6',
-  secondary: '#050316',
-  tertiary: '#6b95ff',
-  quaternary: '#94b3ff',
-  background: '#f9faf7',
+  primary: '#050316',
+  secondary: '#6b7280',
+  tertiary: '#9ca3af',
+  quaternary: '#d1d5db',
+  background: '#fafafa',
   border: '#e5e7eb',
   text: '#050316',
-  textMuted: 'rgba(5, 3, 22, 0.6)',
+  textMuted: 'rgba(5, 3, 22, 0.5)',
 }
 
 export const baseChartOptions: ApexOptions = {
