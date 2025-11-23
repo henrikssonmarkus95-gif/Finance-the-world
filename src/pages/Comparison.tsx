@@ -1,3 +1,7 @@
+import PageLayout from '../components/shared/PageLayout'
+import PageHeader from '../components/shared/PageHeader'
+import Section from '../components/shared/Section'
+import InsightBox from '../components/shared/InsightBox'
 import YearOverYearCards from '../components/comparison/YearOverYearCards'
 import QuarterlyGrowthChart from '../components/comparison/QuarterlyGrowthChart'
 import KPIDevelopmentChart from '../components/comparison/KPIDevelopmentChart'
@@ -5,28 +9,32 @@ import ComparisonTable from '../components/comparison/ComparisonTable'
 
 export default function Comparison() {
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-[32px] font-semibold text-[#050316] mb-2">Jämförelser</h1>
-        <p className="text-[14px] text-[#050316]/60">
-          År-till-år jämförelser och historiska trender.
-        </p>
-      </div>
+    <PageLayout>
+      <PageHeader
+        title="Jämförelser"
+        description="År-till-år jämförelser och historiska trender"
+      />
+
+      <InsightBox title="Kraftig tillväxt 2024" variant="highlight">
+        Omsättningen ökade med 517% från 227 tkr till 1 403 tkr. Kostnaderna växte dock snabbare (+643%),
+        vilket resulterade i lägre rörelsemarginal (2,0% vs 110,3%). Nyemissionen stärkte soliditeten till 50%.
+      </InsightBox>
 
       {/* Year over Year KPI Cards */}
       <YearOverYearCards />
 
       {/* Charts side by side */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <QuarterlyGrowthChart />
-        <KPIDevelopmentChart />
-      </div>
+      <Section title="Utveckling över tid">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <QuarterlyGrowthChart />
+          <KPIDevelopmentChart />
+        </div>
+      </Section>
 
       {/* Full Comparison Table */}
-      <div>
-        <h2 className="text-[20px] font-medium text-[#050316] mb-4">Jämförelsetabell – Alla nyckeltal</h2>
+      <Section title="Jämförelsetabell" description="Alla nyckeltal 2023 vs 2024">
         <ComparisonTable />
-      </div>
-    </div>
+      </Section>
+    </PageLayout>
   )
 }

@@ -1,7 +1,12 @@
+import PageLayout from '../components/shared/PageLayout'
+import PageHeader from '../components/shared/PageHeader'
+import Section from '../components/shared/Section'
+import InsightBox from '../components/shared/InsightBox'
 import RecommendedSolution from '../components/financing/RecommendedSolution'
 import FinancingSolutionCard from '../components/financing/FinancingSolutionCard'
 import FinancingComparisonTable from '../components/financing/FinancingComparisonTable'
 import NeedsAnalysis from '../components/financing/NeedsAnalysis'
+import ScenarioView from '../components/financing/ScenarioView'
 
 const solutions = [
   {
@@ -40,35 +45,39 @@ const solutions = [
 
 export default function Financing() {
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-[32px] font-semibold text-[#050316] mb-2">Finansieringslösningar</h1>
-        <p className="text-[14px] text-[#050316]/60">
-          Rekommenderade finansieringsprodukter baserat på företagets situation.
-        </p>
-      </div>
+    <PageLayout>
+      <PageHeader
+        title="Finansieringslösningar"
+        description="Rekommenderade finansieringsprodukter baserat på företagets situation"
+      />
+
+      <InsightBox title="Akut likviditetsbehov" variant="warning">
+        Med nuvarande kassa på 19 391 kr och burn rate på ~30 000 kr/mån når ni kassaproblem inom 1 månad.
+        Factoring rekommenderas starkt för att frigöra kapital från era kundfordringar på 244 tkr.
+      </InsightBox>
+
+      {/* Scenario Analysis */}
+      <ScenarioView />
 
       {/* Recommended Solution Highlight */}
       <RecommendedSolution />
 
       {/* Solution Cards Grid */}
-      <div>
-        <h2 className="text-[20px] font-medium text-[#050316] mb-4">Finansieringsalternativ</h2>
+      <Section title="Finansieringsalternativ" description="Utvalda produkter som passar Klippsters situation">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {solutions.map((solution) => (
             <FinancingSolutionCard key={solution.provider} {...solution} />
           ))}
         </div>
-      </div>
+      </Section>
 
       {/* Comparison Table */}
-      <div>
-        <h2 className="text-[20px] font-medium text-[#050316] mb-4">Jämförelse</h2>
+      <Section title="Jämförelse" description="Detaljerad jämförelse av finansieringsalternativ">
         <FinancingComparisonTable />
-      </div>
+      </Section>
 
       {/* Needs Analysis */}
       <NeedsAnalysis />
-    </div>
+    </PageLayout>
   )
 }

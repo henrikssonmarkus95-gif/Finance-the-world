@@ -1,28 +1,57 @@
+import PageLayout from '../components/shared/PageLayout'
+import PageHeader from '../components/shared/PageHeader'
+import Section from '../components/shared/Section'
+import StatCard from '../components/shared/StatCard'
 import ResultTable from '../components/results/ResultTable'
 import CostDevelopmentChart from '../components/results/CostDevelopmentChart'
-import MarginAnalysis from '../components/results/MarginAnalysis'
 
 export default function Results() {
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-[32px] font-semibold text-[#050316] mb-2">Resultat & Vinst</h1>
-        <p className="text-[14px] text-[#050316]/60">
-          Resultaträkningsanalys med kostnadsnedbrytning.
-        </p>
+    <PageLayout>
+      <PageHeader
+        title="Resultat & Vinst"
+        description="Resultaträkningsanalys med kostnadsnedbrytning"
+      />
+
+      {/* Summary Stats */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <StatCard
+          title="Summa intäkter"
+          value="1 402 714 kr"
+          change="+517%"
+          changeLabel="vs 2023"
+          trend="up"
+        />
+        <StatCard
+          title="Summa kostnader"
+          value="-1 375 121 kr"
+          change="+643%"
+          changeLabel="vs 2023"
+          trend="down"
+        />
+        <StatCard
+          title="Rörelseresultat"
+          value="27 593 kr"
+          change="-34,7%"
+          changeLabel="vs 2023"
+          trend="down"
+        />
+        <StatCard
+          title="Rörelsemarginal"
+          value="2,0%"
+          change="-108 pp"
+          changeLabel="vs 110,3%"
+          trend="down"
+        />
       </div>
 
-      {/* Margin Analysis Cards */}
-      <MarginAnalysis />
-
-      {/* Table and Chart side by side */}
+      {/* Table and Chart */}
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-        <div>
-          <h2 className="text-[20px] font-medium text-[#050316] mb-4">Resultaträkning</h2>
+        <Section title="Resultaträkning" description="Fullständig resultaträkning 2024 vs 2023">
           <ResultTable />
-        </div>
+        </Section>
         <CostDevelopmentChart />
       </div>
-    </div>
+    </PageLayout>
   )
 }

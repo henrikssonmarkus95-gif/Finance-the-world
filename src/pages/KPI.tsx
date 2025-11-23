@@ -1,31 +1,35 @@
+import PageLayout from '../components/shared/PageLayout'
+import PageHeader from '../components/shared/PageHeader'
+import Section from '../components/shared/Section'
+import InsightBox from '../components/shared/InsightBox'
 import KPIRadarChart from '../components/kpi/KPIRadarChart'
 import KPITable from '../components/kpi/KPITable'
 import LiquidityCards from '../components/kpi/LiquidityCards'
 
 export default function KPI() {
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-[32px] font-semibold text-[#050316] mb-2">Nyckeltal</h1>
-        <p className="text-[14px] text-[#050316]/60">
-          Detaljerad analys av finansiella nyckeltal med jämförelser.
-        </p>
-      </div>
+    <PageLayout>
+      <PageHeader
+        title="Nyckeltal"
+        description="Detaljerad analys av finansiella nyckeltal med jämförelser"
+      />
 
-      {/* Radar Chart and Table side by side on desktop */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <InsightBox title="Analys" variant="default">
+        Soliditeten har förbättrats kraftigt från 16% till <strong>50%</strong> tack vare nyemission.
+        Kassalikviditeten är stark på 98%, men rörelsekapitalet är negativt (-5 676 kr) vilket
+        indikerar behov av kortfristig finansiering.
+      </InsightBox>
+
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
         <KPIRadarChart />
-        <div className="space-y-6">
-          <h2 className="text-[20px] font-medium text-[#050316]">Detaljerad nyckeltalstabell</h2>
+        <Section title="Detaljerad nyckeltalstabell">
           <KPITable />
-        </div>
+        </Section>
       </div>
 
-      {/* Liquidity Analysis */}
-      <div>
-        <h2 className="text-[20px] font-medium text-[#050316] mb-4">Likviditetsanalys</h2>
+      <Section title="Likviditetsanalys" description="Rörelsekapital och betalningsförmåga">
         <LiquidityCards />
-      </div>
-    </div>
+      </Section>
+    </PageLayout>
   )
 }
