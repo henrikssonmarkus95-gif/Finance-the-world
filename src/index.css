@@ -5,18 +5,19 @@
   --color-arcim-surface: #ffffff;
   --color-arcim-primary: #050316;
   --color-arcim-accent: #1a1a2e;
-  --color-arcim-highlight: #f0f4f8;
+  --color-arcim-highlight: #eef2f6;
   --color-arcim-border: #e2e4e9;
   --color-arcim-muted: #f1f3f5;
+  --color-arcim-warm: #faf8f6;
 
   --font-family-sans: 'Inter', system-ui, sans-serif;
 
-  --font-size-display: 48px;
-  --font-size-h1: 36px;
-  --font-size-h2: 20px;
-  --font-size-h3: 15px;
-  --font-size-body: 14px;
-  --font-size-small: 12px;
+  --font-size-display: 44px;
+  --font-size-h1: 32px;
+  --font-size-h2: 18px;
+  --font-size-h3: 14px;
+  --font-size-body: 13px;
+  --font-size-small: 11px;
   --font-size-micro: 10px;
 }
 
@@ -31,25 +32,68 @@ body {
 
 /* Premium micro-interactions */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(6px); }
+  from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-4px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
 .animate-fade-in {
-  animation: fadeInUp 0.35s ease-out forwards;
+  animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Premium number styling */
 .number-display {
   font-variant-numeric: tabular-nums;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
 }
 
-/* Subtle hover effects */
-.hover-lift {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+/* Card hover effects */
+.card-hover {
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
-.hover-lift:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(5, 3, 22, 0.06);
+.card-hover:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(5, 3, 22, 0.08);
+}
+
+/* Soft inset shadow */
+.shadow-inset {
+  box-shadow: inset 0 1px 2px rgba(5, 3, 22, 0.04);
+}
+
+/* Section title underline */
+.title-underline {
+  position: relative;
+  display: inline-block;
+}
+.title-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 24px;
+  height: 2px;
+  background: currentColor;
+  opacity: 0.3;
+}
+
+/* Button micro-bounce */
+.btn-bounce {
+  transition: transform 0.12s ease;
+}
+.btn-bounce:active {
+  transform: scale(0.97);
+}
+
+/* Illustration styling */
+.illustration {
+  color: rgba(5, 3, 22, 0.15);
 }
