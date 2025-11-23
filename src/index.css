@@ -1,26 +1,55 @@
 @import "tailwindcss";
 
 @theme {
-  --color-arcim-bg: #fafafa;
+  --color-arcim-bg: #f8f9fa;
   --color-arcim-surface: #ffffff;
   --color-arcim-primary: #050316;
-  --color-arcim-accent: #050316;
-  --color-arcim-border: #e5e7eb;
+  --color-arcim-accent: #1a1a2e;
+  --color-arcim-highlight: #f0f4f8;
+  --color-arcim-border: #e2e4e9;
+  --color-arcim-muted: #f1f3f5;
 
   --font-family-sans: 'Inter', system-ui, sans-serif;
 
-  --font-size-h1: 40px;
-  --font-size-h2: 32px;
-  --font-size-h3: 24px;
+  --font-size-display: 48px;
+  --font-size-h1: 36px;
+  --font-size-h2: 20px;
+  --font-size-h3: 15px;
   --font-size-body: 14px;
-  --font-size-small: 13px;
+  --font-size-small: 12px;
+  --font-size-micro: 10px;
 }
 
 body {
   background-color: var(--color-arcim-bg);
   color: var(--color-arcim-primary);
   font-family: var(--font-family-sans);
-  line-height: 1.5;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Premium micro-interactions */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.35s ease-out forwards;
+}
+
+/* Premium number styling */
+.number-display {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.025em;
+}
+
+/* Subtle hover effects */
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(5, 3, 22, 0.06);
 }

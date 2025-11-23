@@ -14,17 +14,19 @@ export default function FilterBar({ options, value, onChange, label }: FilterBar
   return (
     <div className="flex items-center gap-3">
       {label && (
-        <span className="text-[13px] text-[#050316]/50">{label}</span>
+        <span className="text-[11px] text-[#050316]/40 font-medium uppercase tracking-wide">{label}</span>
       )}
-      <div className="flex bg-[#fafafa] rounded-lg p-1 border border-[#e5e7eb]">
-        {options.map((option) => (
+      <div className="flex border border-[#e2e4e9] rounded-sm">
+        {options.map((option, index) => (
           <button
             key={option.value}
             onClick={() => onChange(option.value)}
-            className={`px-4 py-2 text-[13px] font-medium rounded-md transition-colors ${
+            className={`px-3 py-1.5 text-[12px] font-medium transition-colors ${
+              index > 0 ? 'border-l border-[#e2e4e9]' : ''
+            } ${
               value === option.value
                 ? 'bg-[#050316] text-white'
-                : 'text-[#050316]/60 hover:text-[#050316]'
+                : 'text-[#050316]/50 hover:text-[#050316] hover:bg-[#f1f3f5]'
             }`}
           >
             {option.label}

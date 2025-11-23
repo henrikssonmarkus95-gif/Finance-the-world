@@ -32,24 +32,24 @@ export default function Dashboard() {
         />
       </PageHeader>
 
-      <InsightBox title="Sammanfattning 2024" variant="highlight">
-        Klippster har vuxit med 3 457% i omsättning och förbättrat soliditeten
-        från 16% till 50%. Kassaflödet är positivt med nettomarginal på 3,9%
-        de senaste 13 månaderna. Rekommendation: Överväg factoring för
-        att frigöra 180-230 tkr i bundna kundfordringar.
-      </InsightBox>
-
-      <Section title="Nyckeltal">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {/* Hero Stats - Asymmetric Layout */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
+        {/* Main KPI - Larger */}
+        <div className="lg:col-span-5">
           <StatCard
             title="Nettoomsättning 2024"
             value="1 362 711 kr"
             change="+3 457%"
             changeLabel="vs 2023"
             trend="up"
+            accent
           />
+        </div>
+
+        {/* Secondary KPIs */}
+        <div className="lg:col-span-7 grid grid-cols-2 gap-4">
           <StatCard
-            title="Rörelseresultat 2024"
+            title="Rörelseresultat"
             value="27 593 kr"
             change="-34,7%"
             changeLabel="vs 2023"
@@ -62,36 +62,48 @@ export default function Dashboard() {
             changeLabel="vs 2023"
             trend="up"
           />
-          <StatCard
-            title="Kassalikviditet"
-            value="98,3%"
-            change="+15,0 pp"
-            changeLabel="vs 2023"
-            trend="up"
-          />
-          <StatCard
-            title="Årets Resultat"
-            value="11 714 kr"
-            change="-62,2%"
-            changeLabel="vs 2023"
-            trend="down"
-          />
-          <StatCard
-            title="Nettomarginal (13 mån)"
-            value="3,9%"
-            change="Gokind-data"
-            changeLabel="Okt 24 - Okt 25"
-            trend="neutral"
-          />
         </div>
-      </Section>
+      </div>
 
-      <Section title="Analys" description="Intäkter, kostnader och nettoresultat över tid">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {/* Insight Block */}
+      <InsightBox title="Sammanfattning" variant="highlight">
+        Klippster har vuxit med 3 457% i omsättning och förbättrat soliditeten
+        från 16% till 50%. Kassaflödet är positivt med nettomarginal på 3,9%.
+        Rekommendation: Överväg factoring för att frigöra 180-230 tkr i bundna kundfordringar.
+      </InsightBox>
+
+      {/* Secondary Stats - 3 column */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <StatCard
+          title="Kassalikviditet"
+          value="98,3%"
+          change="+15,0 pp"
+          changeLabel="vs 2023"
+          trend="up"
+        />
+        <StatCard
+          title="Årets Resultat"
+          value="11 714 kr"
+          change="-62,2%"
+          changeLabel="vs 2023"
+          trend="down"
+        />
+        <StatCard
+          title="Nettomarginal"
+          value="3,9%"
+          change="Gokind-data"
+          changeLabel="13 mån"
+          trend="neutral"
+        />
+      </div>
+
+      {/* Charts in Muted Section */}
+      <Section title="Analys" description="Intäkter, kostnader och nettoresultat över tid" variant="muted">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           <MonthlyRevenueChart />
           <CostBreakdownChart />
         </div>
-        <div className="mt-6">
+        <div className="mt-5">
           <MonthlyNetResultChart />
         </div>
       </Section>

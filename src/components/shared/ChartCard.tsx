@@ -23,19 +23,19 @@ export default function ChartCard({
   insight
 }: ChartCardProps) {
   return (
-    <div className="bg-white border border-[#e5e7eb] rounded-xl overflow-hidden">
-      <div className="px-6 pt-6 pb-4">
-        <h3 className="text-[18px] font-semibold text-[#050316] tracking-tight">{title}</h3>
+    <div className="bg-white border border-[#e2e4e9] rounded-sm overflow-hidden">
+      <div className="px-5 pt-5 pb-3">
+        <h3 className="text-[15px] font-bold text-[#050316] tracking-tight">{title}</h3>
         {subtitle && (
-          <p className="text-[13px] text-[#050316]/50 mt-1">{subtitle}</p>
+          <p className="text-[11px] text-[#050316]/40 mt-0.5">{subtitle}</p>
         )}
       </div>
-      <div className="px-4 pb-4">
+      <div className="px-3 pb-3">
         <Chart options={options} series={series} type={type} height={height} />
       </div>
       {insight && (
-        <div className="px-6 py-4 bg-[#fafafa] border-t border-[#e5e7eb]">
-          <p className="text-[13px] text-[#050316]/60">
+        <div className="px-5 py-3 bg-[#f1f3f5] border-t border-[#e2e4e9]">
+          <p className="text-[12px] text-[#050316]/55 leading-relaxed">
             {insight}
           </p>
         </div>
