@@ -22,18 +22,12 @@ function MarginCard({ title, value, comparison, change }: MarginCardProps) {
 
 export default function MarginAnalysis() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <MarginCard
         title="Rörelsemarginal 2024"
         value="2.0%"
         comparison="vs 2023: 110.3%"
         change="-108.3 procentenheter"
-      />
-      <MarginCard
-        title="Nettomarginal 2024"
-        value="0.9%"
-        comparison="vs 2023: 80.8%"
-        change="-79.9 procentenheter"
       />
       <MarginCard
         title="Nettomarginal (13 mån)"
